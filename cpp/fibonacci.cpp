@@ -19,7 +19,7 @@ int main() {
     // Medir tiempo de ejecución
     auto start_time = std::chrono::high_resolution_clock::now();
 
-    // Calcular Fibonacci hasta 20,000
+    // Calcular Fibonacci hasta 10,000
     for (int i = 0; i < 10000; i++) {
         fibonacci(i);
     }
@@ -27,19 +27,25 @@ int main() {
     auto end_time = std::chrono::high_resolution_clock::now();
     double execution_time_ms = std::chrono::duration<double, std::milli>(end_time - start_time).count();
 
-    std::cout << "C++ execution time in ms:" << execution_time_ms << std::endl;
+    std::cout << execution_time_ms << " ms" << std::endl;
 
     // Crear directorio de salida usando filesystem (C++17+)
     std::string output_dir = "/app/salida_cpp";
-    std::filesystem::create_directories(output_dir);
+    if (!std::filesystem::exists(output_dir)) {
+        if (!std::filesystem::create_directories(output_dir)) {
+            std::cerr << "Error: No se pudo crear el directorio de salida." << std::endl;
+            return 1;
+        }
+    }
 
     // Guardar el tiempo en un archivo
     std::ofstream outfile(output_dir + "/salida_cpp.txt");
     if (outfile.is_open()) {
-        outfile << "C++ execution time in ms:" << execution_time_ms << std::endl;
+        outfile << execution_time_ms << " ms"  << std::endl;
         outfile.close();
     } else {
-        std::cerr << "Error creando archivo." << std::endl;
+        std::cerr << "Error: No se pudo crear el archivo de salida." << std::endl;
+        return 1;
     }
 
     return 0;

@@ -4,8 +4,8 @@ WORKDIR /app
 
 RUN mkdir -p /app/salida_java
 
-COPY Fibonacci.java .
+COPY fibonacci.java .
 
-RUN javac Fibonacci.java
+RUN javac fibonacci.java
 
-CMD ["java", "/app/Fibonacci.java"]
+CMD ["java", "/app/fibonacci.java"]

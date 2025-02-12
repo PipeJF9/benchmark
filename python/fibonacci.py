@@ -18,9 +18,9 @@ fib_numbers = [str(fibonacci(i)) for i in range(10000)]
 end_time = time.time() - start_time	
 
 # Imprimir correctamente la ejecución
-print(f"Python execution time in ms: {end_time * 1000}")
+print(f"{end_time * 1000} ms")
 
 # Guardar en el archivo dentro del contenedor
 output_file = os.path.join(output_dir, "salida_python.txt")
 with open(output_file, "w") as f:
-    f.write(f"Python execution time in ms:{end_time * 1000}")
+    f.write(f"{end_time * 1000} ms")

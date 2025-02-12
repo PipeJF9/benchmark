@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Fibonacci {
+public class fibonacci {
     public static long fibonacci(int n, long[] memo) {
         if (n <= 1) return n;
         if (memo[n] != 0) return memo[n];
@@ -22,7 +22,7 @@ public class Fibonacci {
         long endTime = System.nanoTime() - startTime;
         double executionTimeMs = endTime / 1_000_000.0;
 
-        System.out.println("Java execution time in ms:" + executionTimeMs);
+        System.out.println(executionTimeMs + " ms");
 
         // Crear directorio si no existe
         File dir = new File("/app/salida_java");
@@ -33,7 +33,7 @@ public class Fibonacci {
         // Guardar el tiempo en un archivo
         File outputFile = new File(dir, "salida_java.txt");
         try (FileWriter writer = new FileWriter(outputFile)) {
-            writer.write("Java execution time in ms:" + executionTimeMs);
+            writer.write(executionTimeMs + " ms");
         } catch (IOException e) {
             e.printStackTrace();
         }

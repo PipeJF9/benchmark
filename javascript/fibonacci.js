@@ -21,10 +21,10 @@ for (let i = 0; i < 10000; i++) {
 const endTime = performance.now() - startTime;
 
 // Imprimir correctamente la ejecución
-console.log(`JavaScript execution time in ms:${endTime}`);
+console.log(`${endTime} ms`);
 
 // Guardar en el archivo dentro del contenedor
 const outputFile = path.join(outputDir, "salida_js.txt");
 
-fs.writeFileSync(outputFile, `JavaScript execution time in ms:${endTime}`);
+fs.writeFileSync(outputFile, `${endTime} ms`);
 

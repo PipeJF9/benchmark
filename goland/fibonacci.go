@@ -29,9 +29,10 @@ func main() {
 		fibonacci(i, memo)
 	}
 
-	endTime := time.Since(startTime).Milliseconds()
+	endTime := time.Since(startTime)
+	executionTime := float64(endTime.Nanoseconds()) / 1e6 // Convertir a ms con decimales
 
-	fmt.Printf("Go execution time in ms:%d\n", endTime)
+	fmt.Printf("%.6f ms\n", executionTime)
 
 	// Crear directorio si no existe
 	outputDir := "/app/salida_go"
@@ -49,7 +50,7 @@ func main() {
 	}
 	defer file.Close()
 
-	_, err = file.WriteString(fmt.Sprintf("Go execution time in ms:%d\n", endTime))
+	_, err = file.WriteString(fmt.Sprintf("%d ms", endTime))
 	if err != nil {
 		fmt.Println("Error escribiendo en archivo:", err)
 	}
