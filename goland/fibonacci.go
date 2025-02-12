@@ -49,8 +49,8 @@ func main() {
 		return
 	}
 	defer file.Close()
-
-	_, err = file.WriteString(fmt.Sprintf("%d ms", endTime))
+	
+	_, err = file.WriteString(fmt.Sprintf("%.6f ms", executionTime))
 	if err != nil {
 		fmt.Println("Error escribiendo en archivo:", err)
 	}
